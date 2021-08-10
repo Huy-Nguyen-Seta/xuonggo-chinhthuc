@@ -31,6 +31,8 @@ public class ListDealOutController {
 			Map<String, String> message = messageUtil.getMessage(request.getParameter("message"));
 			model.addObject("message", message.get("message"));
 			model.addObject("alert", message.get("alert"));
+			System.out.println(message);
+
 		}
 		model.addObject("list",gson.toJson(deal.findAllByStatusUserAccep(0)));
 		return model;

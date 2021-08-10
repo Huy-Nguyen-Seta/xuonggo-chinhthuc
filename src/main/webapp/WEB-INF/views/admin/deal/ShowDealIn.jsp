@@ -90,7 +90,7 @@
 														  <c:set var="count" value="${count +1}" /> 
 														<tr>
 														    <td style=" border: 1px solid  #87CEFA" id="cot">${count}</td>
-														    <td style=" border: 1px solid  #87CEFA"><img src="<c:url value='/resources/images/${item1.vatlieu.imageAfter}'/>" style="height: 50px;width: 80px"/></td>
+														    <td style=" border: 1px solid  #87CEFA"><img src="<c:url value='/resources/images/${item1.vatlieu.afterimage}'/>" style="height: 50px;width: 80px"/></td>
 															<td style=" border: 1px solid  #87CEFA">${item1.vatlieu.title}</td>
 															<td style=" border: 1px solid  #87CEFA" id="soluong${count}">${item1.soluong}</td>
 															<td style=" border: 1px solid  #87CEFA" id="gia${count}">${item1.vatlieu.gia}.000VND</td>

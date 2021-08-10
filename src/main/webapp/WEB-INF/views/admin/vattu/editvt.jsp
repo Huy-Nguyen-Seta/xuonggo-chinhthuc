@@ -37,7 +37,7 @@
 									
 								</div>
 								
-									<img alt="chưa ảnh nào được chọn" id="anh" style="height: 150px;width: 200px"  src="<c:url value='/resources/images/${model.imageAfter }'/>">
+									<img alt="chưa ảnh nào được chọn" id="anh" style="height: 150px;width: 200px"  src="<c:url value='/resources/images/${model.afterimage }'/>">
 									
 						</div>
 					

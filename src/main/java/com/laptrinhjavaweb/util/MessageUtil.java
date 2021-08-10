@@ -31,7 +31,7 @@ public class MessageUtil {
 				result.put("message", "tài khoản đã được đăng ký");
 				result.put("alert", "danger");
 			}
-		 else if (message.equals("accept_system")) {
+		 else if (message.equals("accept_success")) {
 				result.put("message", "Xác nhận đơn hàng thành công");
 				result.put("alert", "success");
 			}
