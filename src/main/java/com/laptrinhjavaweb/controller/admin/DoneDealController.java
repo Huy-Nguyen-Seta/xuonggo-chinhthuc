@@ -14,14 +14,14 @@ import com.laptrinhjavaweb.dto.DealOutDTO;
 import com.laptrinhjavaweb.service.IDealOutservice;
 
 
-@Controller(value = "dealControllerOfAdmin")
-public class DealController {
+@Controller(value = "donedealControllerOfAdmin")
+public class DoneDealController {
 	@Autowired 
 	private IDealOutservice deal;
 
 	
 	
-	@RequestMapping(value = "/quan-tri/deal", method = RequestMethod.GET)
+	@RequestMapping(value = "/quan-tri/done-deal", method = RequestMethod.GET)
 	public ModelAndView homePage(@RequestParam("id") int id, HttpServletRequest request) {
 		
 		

@@ -12,10 +12,7 @@
 	<div class="main-content-inner">
 		<div class="breadcrumbs" id="breadcrumbs">
 			<script type="text/javascript">
-				try {
-					ace.settings.check('breadcrumbs', 'fixed')
-				} catch (e) {
-				}
+			
 			</script>
 
 			

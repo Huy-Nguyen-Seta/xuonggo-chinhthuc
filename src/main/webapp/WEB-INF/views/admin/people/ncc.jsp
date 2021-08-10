@@ -42,7 +42,7 @@
 									<div class="table-btn-controls">
 										<div class="pull-right tableTools-container">
 											<div class="dt-buttons btn-overlap btn-group">
-												<c:url var="createNewURL" value="/quan-tri/ncc/chinh-sua"/>
+												<c:url var="createNewURL" value="/quan-tri/ncc/chinh-sua?page=${model.page }"/>
 												<a flag="info"
 												   class="dt-button buttons-colvis btn btn-white btn-primary btn-bold" data-toggle="tooltip"
 												   title='Thêm bài viết' href='${createNewURL}'>
@@ -67,7 +67,7 @@
 												<thead>
 													<tr>
 														<th><input type="checkbox" id="checkAll"></th>
-														
+														<th>Ảnh </th>
 														<th>Tên nhà cung cấp</th>
 														<th>Đơn vị</th>
 														<th>Địa chỉ</th>
@@ -81,6 +81,7 @@
 													<c:forEach var="item" items="${model.listResult}">
 														<tr>
 															<td><input class="mycheck" type="checkbox" id="checkbox_${item.id}" value="${item.id}"></td>
+														    <td><img style="height: 100px;width: 150px" src="<c:url value='/resources/images/${item.afterimage}'/>"/></td>
 															
 															<td >${item.fullName}</td>
 															<td>${item.donvi}</td>
@@ -89,7 +90,7 @@
 															<td>${item.gmail}</td>
 														
 															<td>
-																<c:url var="updateNewURL" value="/quan-tri/ncc/chinh-sua">
+																<c:url var="updateNewURL" value="/quan-tri/ncc/chinh-sua?page=${model.page }">
 																	<c:param name="id" value="${item.id}"/>															
 																</c:url>																
 																<a class="btn btn-sm btn-primary btn-edit" data-toggle="tooltip"

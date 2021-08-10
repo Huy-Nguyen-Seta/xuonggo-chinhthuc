@@ -9,15 +9,15 @@ public class showdealnhapDTO extends AbstractDTO<showdealnhapDTO>{
 	public long getMancc() {
 		return mancc;
 	}
-    public vtDto vatlieu;
+    public MaterialDTO vatlieu;
   
 
-	public vtDto getVatlieu() {
+	public MaterialDTO getVatlieu() {
 		return vatlieu;
 	}
 
 
-	public void setVatlieu(vtDto vatlieu) {
+	public void setVatlieu(MaterialDTO vatlieu) {
 		this.vatlieu = vatlieu;
 	}
 

@@ -77,7 +77,7 @@
 													<c:forEach var="item" items="${model.listResult}">
 														<tr>
 															<td><input type="checkbox" class="mycheck" id="checkbox_${item.id}" value="${item.id}"></td>
-															<td><img style="height: 70px;width: 100px"  src="<c:url value='/resources/images/${item.imageAfter }'/>"></td>
+															<td><img style="height: 70px;width: 100px"  src="<c:url value='/resources/images/${item.afterimage }'/>"></td>
 															<td>${item.title}</td>
 															<td>${item.shortDescription}</td>
 															<td>${item.chieudai} x ${item.chieurong}</td>

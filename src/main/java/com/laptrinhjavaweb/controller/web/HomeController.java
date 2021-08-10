@@ -57,7 +57,7 @@ private ICategoryService catesevice;
 	}
 	@RequestMapping(value = "/cart", method = RequestMethod.GET)
 	public ModelAndView cart() {
-		ModelAndView mav = new ModelAndView("web/giohang");
+		ModelAndView mav = new ModelAndView("web/cart");
 		
 		return mav;
 	}

@@ -1,20 +1,21 @@
 package com.laptrinhjavaweb.api.admin;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.laptrinhjavaweb.dto.showdealDTO;
+import com.laptrinhjavaweb.dto.ShowDealOutDTO;
 import com.laptrinhjavaweb.dto.showdealnhapDTO;
 import com.laptrinhjavaweb.entity.dealEntity;
-import com.laptrinhjavaweb.repository.Dealrepository;
+import com.laptrinhjavaweb.repository.DealOutrepository;
 import com.laptrinhjavaweb.service.IShowdealservice;
 import com.laptrinhjavaweb.service.IUsersevice;
-import com.laptrinhjavaweb.service.Idealnhapservice;
-import com.laptrinhjavaweb.service.Idealservice;
+import com.laptrinhjavaweb.service.IDealInservice;
+import com.laptrinhjavaweb.service.IDealOutservice;
 import com.laptrinhjavaweb.util.SecurityUtils;
 
 
@@ -22,28 +23,29 @@ import com.laptrinhjavaweb.util.SecurityUtils;
 public class DealApi {
 	
 	 @Autowired
-	private Idealservice deal;
+	// @Qualifier
+	private IDealOutservice deal;
 	 @Autowired
 	private IShowdealservice showdeal;
 	@Autowired
 	private IUsersevice usersv;
 	@Autowired
-	private Dealrepository Dealrepository;
+	private DealOutrepository DealOutrepository;
 	@Autowired
-	private Idealnhapservice dealnhap;
+	private IDealInservice dealnhap;
 	
 	@PostMapping("/api/deal")
-	public void create(@RequestBody showdealDTO showDTO[]) {
+	public void create(@RequestBody ShowDealOutDTO showDTO[]) {
 		dealEntity dto=new dealEntity();
 		String user=SecurityUtils.getPrincipal().getUsername();
 		
 		dto.setUser(usersv.finbyusername(user));
 		dto.setstatus(1);
-		long id = Dealrepository.save(dto).getId();
+		long id = DealOutrepository.save(dto).getId();
 		
-		for (showdealDTO showdealDTO : showDTO) {
-			showdealDTO.setMahd(id);
-			showdeal.save(showdealDTO);
+		for (ShowDealOutDTO ShowDealOutDTO : showDTO) {
+			ShowDealOutDTO.setMahd(id);
+			showdeal.save(ShowDealOutDTO);
 		}
 		
 	}

@@ -8,27 +8,27 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
-import com.laptrinhjavaweb.repository.Dealrepository;
-import com.laptrinhjavaweb.repository.NewRepository;
-import com.laptrinhjavaweb.repository.VtRepository;
+import com.laptrinhjavaweb.repository.DealOutrepository;
+import com.laptrinhjavaweb.repository.ProductRepository;
+import com.laptrinhjavaweb.repository.MaterialRepository;
 import com.laptrinhjavaweb.service.INewService;
-import com.laptrinhjavaweb.service.Idealnhapservice;
-import com.laptrinhjavaweb.service.Idealservice;
+import com.laptrinhjavaweb.service.IDealInservice;
+import com.laptrinhjavaweb.service.IDealOutservice;
 
 @Controller(value = "homeControllerOfAdmin")
 public class HomeController {
   @Autowired
-  private Idealservice dealsv;
+  private IDealOutservice dealsv;
   @Autowired
   private INewService newsv;
   @Autowired
-  private Idealnhapservice dealnhap;
+  private IDealInservice dealnhap;
  @Autowired 
-   private Dealrepository dealrp;
+   private DealOutrepository dealrp;
  @Autowired
- private NewRepository newrp;
+ private ProductRepository newrp;
  @Autowired
- private VtRepository vtrp;
+ private MaterialRepository vtrp;
  
 	@RequestMapping(value = "/quan-tri/trang-chu", method = RequestMethod.GET)
 	public ModelAndView homePage(@RequestParam("year")int year) {
@@ -37,7 +37,7 @@ public class HomeController {
 		//LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 		ModelAndView mav = new ModelAndView("admin/home");
 		mav.addObject("chart", dealsv.chart(year));
-		mav.addObject("listds",json.toJson(newsv.findbyslm(25)));
+		mav.addObject("listds",json.toJson(newsv.findbyslm(15)));
 	    mav.addObject("listdsnhap",dealnhap.chart(year));
 		mav.addObject("tongchi", dealnhap.MonneywithYear(year));
 		mav.addObject("tongthu", dealsv.MonneywithYear(year));

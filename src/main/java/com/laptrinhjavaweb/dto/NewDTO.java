@@ -1,18 +1,16 @@
 package com.laptrinhjavaweb.dto;
 
-import org.springframework.web.multipart.MultipartFile;
-
 public class NewDTO extends AbstractDTO<NewDTO> {
 	
 	private String title;
-	private MultipartFile thumbnail;
+	
 	private String shortDescription;
 	private String content;
 	private Long categoryId;
 	private String categoryCode;
 	private int kiemtra;
 	private int loai;
-	private String afterimage;
+	
 	private boolean popular;
  
 	
@@ -22,12 +20,7 @@ public class NewDTO extends AbstractDTO<NewDTO> {
 	public void setPopular(boolean popular) {
 		this.popular = popular;
 	}
-	public String getAfterimage() {
-		return afterimage;
-	}
-	public void setAfterimage(String afterimage) {
-		this.afterimage = afterimage;
-	}
+	
 	public int getLoai() {
 		return loai;
 	}
@@ -101,12 +94,6 @@ public class NewDTO extends AbstractDTO<NewDTO> {
 	}
 	public void setTitle(String title) {
 		this.title = title;
-	}
-	public MultipartFile getThumbnail() {
-		return thumbnail;
-	}
-	public void setThumbnail(MultipartFile thumbnail) {
-		this.thumbnail = thumbnail;
 	}
 	public String getShortDescription() {
 		return shortDescription;

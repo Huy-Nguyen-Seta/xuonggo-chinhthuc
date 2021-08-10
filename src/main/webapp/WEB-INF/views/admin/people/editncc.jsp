@@ -28,13 +28,24 @@
   							${message}
 						</div>
 					</c:if>
-					<form:form class="form-horizontal" role="form" id="formSubmit" modelAttribute="model">
+					<form:form action="../ncc" class="form-horizontal" role="form" id="formSubmit" enctype="multipart/form-data" modelAttribute="model" method="post"> 
 				
 						<div class="form-group">
 							<label class="col-sm-3 control-label no-padding-right" for="form-field-1">Tên nhà cung cấp</label>
 							<div class="col-sm-9">
 								<form:input path="fullName" id="title" cssClass="col-xs-10 col-sm-5"/>
 							</div>
+					</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right" for="form-field-1">Ảnh đại diện</label>
+							<div class="col-sm-9">
+								<form:input onchange="change()" type="file" id="thumbnail" path="thumbnail" cssClass="col-xs-10 col-sm-5"/>
+								
+							</div>
+							
+						<img alt="chưa ảnh nào được chọn" style="height: 150px;width: 200px" id="anh"  src="<c:url value='/resources/images/${model.afterimage }'/>">
+					
+					
 					</div>
 						<div class="form-group">
 								<label class="col-sm-3 control-label no-padding-right" for="form-field-1">Đơn vị</label>
@@ -47,7 +58,7 @@
                   	<div class="form-group">
 						<label class="col-sm-3 control-label no-padding-right" for="form-field-1">Số điện thoại</label>
 						<div class="col-sm-9">
-							<form:input path="sdt" cssClass="col-xs-10 col-sm-5"/>
+							<form:input path="sdt" id="sdt" cssClass="col-xs-10 col-sm-5"/>
 						</div>
 				</div>
 				<div class="form-group">
@@ -59,21 +70,22 @@
 						<div class="form-group">
 						  	<label for="diachi" class="col-sm-3 control-label no-padding-right">Địa chỉ:</label>
 						  	<div class="col-sm-9">
-						  		<form:textarea path="diachi" rows="5" cols="10" cssClass="form-control" id="shortDescription"/>
+						  		<form:textarea path="diachi" rows="5" cols="10" cssClass="form-control" id="diachi"/>
 						  	</div>
 						</div>
-					
+					<input type="hidden" value="1" id="page" name="page"/>
+											<input type="hidden" value="6" id="limit" name="limit"/>
 						<form:hidden path="id" id="newId"/>
 						<div class="clearfix form-actions">
 							<div class="col-md-offset-3 col-md-9">
 											<c:if test="${not empty model.id}">
-												<button class="btn btn-info"  type="button" id="btnAddOrUpdateNew">
+												<button class="btn btn-info" onclick="kick()"  type="button" id="btnAddOrUpdateNew">
 													<i class="ace-icon fa fa-check bigger-110"></i>
 													cập nhật danh bạ
 												</button>
 											</c:if>
 											<c:if test="${empty model.id}">
-												<button class="btn btn-info"   type="button" id="btnAddOrUpdateNew">
+												<button class="btn btn-info" onclick="kick()"   type="button" id="btnAddOrUpdateNew">
 													<i class="ace-icon fa fa-check bigger-110"></i>
 													Thêm danh bạ
 												</button>
@@ -95,9 +107,33 @@
 
 <script>
 var imgURL
-
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
 		
+function kick() {
+	
 
+	var tech = getParameterByName('page');
+	
+	$('#page').val(tech)
+	if(!$('#diachi').val()||!$('#title').val()||!$('#sdt').val()){
+		console.log($('#gia').val());
+		console.log($('#title').val());
+		console.log($('#categoryCode').val());
+		alert('vui lòng nhập đủ thông tin');
+		
+	}
+	else{
+		$('#formSubmit').submit();
+	}
+		}
 		
 		
 			
@@ -114,7 +150,8 @@ function  change() {
 }
 console.log(imgURL)
 
-	$('#btnAddOrUpdateNew').click(function (e) {
+
+/*	$('#btnAddOrUpdateNew').click(function (e) {
 	    e.preventDefault();
 	    var data = {};
 	    var formData = $('#formSubmit').serializeArray();
@@ -169,7 +206,7 @@ console.log(imgURL)
             	window.location.href = "${newURL}?page=1&limit=6&message=error_system";
             }
         });
-	}
+	}*/
 </script>
 </body>
 </html>

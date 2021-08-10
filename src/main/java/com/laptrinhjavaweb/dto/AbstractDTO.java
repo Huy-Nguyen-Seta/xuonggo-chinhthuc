@@ -4,14 +4,21 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class AbstractDTO<T> {
 	private int trangthai;
 	public int getTrangthai() {
 		return trangthai;
 	}
-	public void setTrangthai(int trangthai) {
-		this.trangthai = trangthai;
+	private MultipartFile thumbnail;
+	public MultipartFile getThumbnail() {
+		return thumbnail;
 	}
+	public void setThumbnail(MultipartFile thumbnail) {
+		this.thumbnail = thumbnail;
+	}
+	private String Afterimage;
 	private Long id;
 	private Timestamp createdDate;
 	private Timestamp modifiedDate;
@@ -28,7 +35,15 @@ public class AbstractDTO<T> {
 	private String alert;
 	private String message;
 	private String type;
-	
+	public String getAfterimage() {
+		return Afterimage;
+	}
+	public void setAfterimage(String afterimage) {
+		Afterimage = afterimage;
+	}
+	public void setTrangthai(int trangthai) {
+		this.trangthai = trangthai;
+	}
 	public Long getId() {
 		return id;
 	}

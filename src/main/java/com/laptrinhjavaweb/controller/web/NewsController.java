@@ -30,7 +30,7 @@ private ICategoryService catesevice1;
 		NewDTO model = new NewDTO();
 		model.setPage(page);
 		model.setLimit(limit);
-		ModelAndView mav = new ModelAndView("web/news");
+		ModelAndView mav = new ModelAndView("web/Product");
 		Pageable pageable = new PageRequest(page - 1, limit);
 		model.setListResult(catesevice.findAll(pageable,cate));
 		model.setTotalItem(catesevice.getTotalItem(cate));

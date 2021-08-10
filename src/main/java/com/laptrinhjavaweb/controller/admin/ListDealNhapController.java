@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
-import com.laptrinhjavaweb.service.Idealnhapservice;
+import com.laptrinhjavaweb.service.IDealInservice;
 import com.laptrinhjavaweb.util.MessageUtil;
 
 @Controller(value = "ListdealNhapController")
@@ -20,12 +20,12 @@ public class ListDealNhapController {
 	@Autowired
 	private MessageUtil messageUtil;
 	@Autowired 
-	private Idealnhapservice dealnhap;
+	private IDealInservice dealnhap;
 	@RequestMapping(value = "/quan-tri/listdanhsachnhap",method = RequestMethod.GET)
 	public ModelAndView lisDeal(HttpServletRequest request) {
 		 Gson gson = new Gson();
 		  
-			ModelAndView model= new ModelAndView("/admin/deal/danhsachdealnhap");
+			ModelAndView model= new ModelAndView("/admin/deal/ListDealIn");
 			if (request.getParameter("message") != null) {
 				
 				Map<String, String> message = messageUtil.getMessage(request.getParameter("message"));
@@ -40,7 +40,7 @@ public class ListDealNhapController {
 	public ModelAndView showdeal(@RequestParam("id")long id , HttpServletRequest request) {
 		//Gson gson = new Gson();
 		  
-		ModelAndView model= new ModelAndView("/admin/deal/showdealnhap");
+		ModelAndView model= new ModelAndView("/admin/deal/ShowDealIn");
 		//System.out.println(dealnhap.findById(id));
 		model.addObject("model",dealnhap.findById(id));
 		return model;

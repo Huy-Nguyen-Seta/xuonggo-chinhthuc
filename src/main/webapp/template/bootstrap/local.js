@@ -13,8 +13,7 @@ function laydanhsachgiohang(){
     var danhsachitem=new Array();
     var json=localStorage.getItem(keylocal);
     if(json!=null)
-    danhsachitem=JSON.parse(json);
-
+    danhsachitem=JSON.parse(json);  
     return danhsachitem;
 }
 
